@@ -6,8 +6,8 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
   const getEmployeesData = async () => {
     const res = await fetch("http://localhost:8000/users");
-    const { users } = await res.json();
-    setUsers(users);
+    const {users} = await res.json();
+    setUsers(users );
   };
   useEffect(() => {
     getEmployeesData();
