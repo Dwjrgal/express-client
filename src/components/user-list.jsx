@@ -9,6 +9,7 @@ const UserList = () => {
   const [email, setEmail] = useState("");
   const [position, setPosition] = useState("");
   const [inputOpen, setInputOpen] = useState(false);
+  const [reFetch, setReFetch ] = useState([]); 
   const getEmployeesData = async () => {
     const res = await fetch("http://localhost:8000/users");
     const { users } = await res.json();
@@ -17,6 +18,15 @@ const UserList = () => {
   const open = () => {
     setInputOpen(true);
   };
+
+  const deleteEmployee = async (id) =>{
+    const res = await fetch (`http://localhost:8000/users${id}`,{
+      method: "DELETE"
+    });
+    const { user } = await res.json(res);
+    console.log("success deleted", user)
+    setReFetch(!reFetch);
+  }
 
   const addList = async () => {
     const res = await fetch("http://localhost:8000/users", {
@@ -49,14 +59,15 @@ const UserList = () => {
             <UserHead />
             <tbody>
               {users?.map((user) => (
-                <UserRow user={user} />
+                <UserRow user={user} deleteEmployee={deleteEmployee}/>
               ))}
             </tbody>
           </table>
+          <TextInput/>
         </div>
-        <button className="btn btn-outline btn-success h-5 ml-5" onClick={open}>
+        {/* <button className="btn btn-outline btn-success h-5 ml-5" onClick={open}>
           Add list
-        </button>
+        </button> */}
       </section>
 
       {inputOpen && (

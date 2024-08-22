@@ -11,7 +11,13 @@ const TextInput = ({
 }) => {
   return (
     <>
-      <section className="w-60 flex gap-2 flex-col">
+<button className="btn btn-outline btn-accent" onClick={()=>document.getElementById('my_modal_3').showModal()}>Add list</button>
+<dialog id="my_modal_3" className="modal">
+  <div className="modal-box">
+    <form method="dialog">
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <section className="w-80 flex gap-2 flex-col mx-auto">
         <label className="input input-bordered flex items-center gap-2">
           <input
             type="text"
@@ -39,10 +45,12 @@ const TextInput = ({
             onChange={(e) => setPosition(e.target.value)}
           />
         </label>
-        <button className="btn" onClick={addList}>
+        <button className="btn btn-outline btn-success" onClick={addList}>
           Save
         </button>
       </section>
+  </div>
+</dialog>    
     </>
   );
 };
