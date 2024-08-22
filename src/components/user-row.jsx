@@ -1,15 +1,12 @@
 import React from "react";
 
-const UserRow = ( { user }) => {
+const UserRow = ({ user }) => {
   return (
     <tr>
       <td>
         <div className="avatar">
           <div className="w-12 h-12 mask mask-squircle">
-            <img
-              src={user.profileImg}
-              alt="Avatar Tailwind CSS Component"
-            />
+            <img src={user.profileImg} alt="Avatar Tailwind CSS Component" />
           </div>
         </div>
       </td>
@@ -28,7 +25,12 @@ const UserRow = ( { user }) => {
       <td>{user.email}</td>
       <td>
         <button className="btn btn-outline btn-info btn-xs">Edit</button>
-        <button className="btn btn-outline btn-error btn-xs">delete</button>
+        <button
+          className="btn btn-outline btn-error btn-xs"
+          onClick={deleteCard}
+        >
+          delete
+        </button>
       </td>
     </tr>
   );
