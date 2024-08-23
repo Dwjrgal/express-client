@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
-const UserRow = ({ user, deleteEmployee }) => {
+const UserRow = ({ user, deleteEmployee, open }) => {
+  const [deleteBtn, setdeleteBtn] = useState(false);
+  const refresh = () => {
+    setdeleteBtn(true);
+  };
   return (
     <tr>
       <td>
@@ -24,12 +28,17 @@ const UserRow = ({ user, deleteEmployee }) => {
       </td>
       <td>{user.email}</td>
       <td>
-        <button className="btn btn-outline btn-info btn-xs">Edit</button>
+        <button className="btn btn-outline btn-info btn-xs" onClick={open}>
+          Edit
+        </button>
         <button
           className="btn btn-outline btn-error btn-xs"
-          onClick={() => { deleteEmployee
-            console.log(user.eid);
-            deleteEmployee(user.eid)
+          onClick={() => {
+            deleteEmployee;
+            deleteEmployee(user.eid);
+            {
+              deleteBtn;
+            }
           }}
         >
           delete
